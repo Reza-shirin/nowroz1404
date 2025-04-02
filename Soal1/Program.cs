@@ -1,49 +1,36 @@
 /*
     📌 تکالیف
-    سوال 1: محاسبه اختلاف سنی بر اساس سال، ماه و روز تولد
+    سوال 2: محاسبه تعداد روزهایی که یک فرد تا نوروز 1404 زندگی کرده است
 */
 
 using System;
 
-namespace Takalif.Soal2
+namespace Takalif.Soal1
 {
     internal class Program
     {
         static void Main(string[] args)
         {
-            int y1, m1, d1, y2, m2, d2, r, r1, r2, r3;
-            Console.WriteLine("لطفاً سال تولد نفر اول را وارد کنید: ");
-            y1 = int.Parse(Console.ReadLine());
-            Console.WriteLine("لطفاً ماه تولد نفر اول را وارد کنید: ");
-            m1 = int.Parse(Console.ReadLine());
-            Console.WriteLine("لطفاً روز تولد نفر اول را وارد کنید: ");
-            d1 = int.Parse(Console.ReadLine());
-            Console.WriteLine("لطفاً سال تولد نفر دوم را وارد کنید: ");
-            y2 = int.Parse(Console.ReadLine());
-            Console.WriteLine("لطفاً ماه تولد نفر دوم را وارد کنید: ");
-            m2 = int.Parse(Console.ReadLine());
-            Console.WriteLine("لطفاً روز تولد نفر دوم را وارد کنید: ");
-            d2 = int.Parse(Console.ReadLine());
+            int y, m, d, r, r1, r2;
+            Console.WriteLine("لطفاً سال تولد خود را وارد کنید: ");
+            y = int.Parse(Console.ReadLine());
+            Console.WriteLine("لطفاً ماه تولد خود را وارد کنید: ");
+            m = int.Parse(Console.ReadLine());
+            Console.WriteLine("لطفاً روز تولد خود را وارد کنید: ");
+            d = int.Parse(Console.ReadLine());
 
-            if (m1 <= 6)
-            {
-                r1 = 365 - (m1 - 1) * 31 + d1;
-            }
+            r1 = (1404 - y - 1) * 365;
+            if (m <= 6)
+                r2 = 365 - ((m - 1) * 31 + d);
             else
-            {
-                r1 = 365 - (186 + ((m1 - 7) * 30) + d1);
-            }
-            if (m2 <= 6)
-            {
-                r2 = 365 - (m2 - 1) * 31 + d2;
-            }
-            else
-            {
-                r2 = 365 - (186 + ((m2 - 7) * 30) + d2);
-            }
-            r3 = (y2 - y1 - 1) * 365;
-            r = r1 + r2 + r3;
-            Console.WriteLine("اختلاف سنی به روز: " + r);
+                r2 = 365 - (186 + (m - 7) * 30 + d);
+            r = r1 + r2;
+
+            Console.WriteLine("شما '" + r + "' روز زندگی کرده‌اید.");
+            y = r / 365;
+            m = (r % 365) / 30;
+            d = ((r % 365) % 30);
+            Console.WriteLine(y + " سال و " + m + " ماه و " + d + " روز");
             Console.ReadKey();
         }
     }
